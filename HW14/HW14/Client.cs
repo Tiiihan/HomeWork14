@@ -9,17 +9,34 @@ namespace HW14
 {
 	internal class Client
 	{
-		private readonly int pinCode; 
+		const int pincodeLENGTH = 4;
+		private readonly string pinCode; 
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
+		public string PinCode => pinCode;
 
-		public Client(string firstName, string lastName, int pinCode)
-		{ 
+		public Client(string firstName, string lastName, string pincode)
+		{
 			FirstName = firstName;
 			LastName = lastName;
-			this.pinCode = pinCode;
+			this.pinCode = pincode;
 		}
 
-		public bool IsCorrectPinCode(int userInput) => pinCode == userInput;
+		public bool IsCorrectPinCode(string userInput) => pinCode == userInput;
+		public static bool IsValidPinCode(string pincode)
+		{
+			if (pincode.Length != pincodeLENGTH)
+				return false;
+
+			int counter = 0;
+			for (int i = 0; i < pincode.Length; i++)
+				if (char.IsDigit(pincode[i]))
+					counter++;
+
+			if (counter != pincodeLENGTH)
+				return false;
+
+			return true;
+		}
 	}
 }
