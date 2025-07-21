@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HW14
 {
-	internal static class AccountManager
+	internal class AccountManager
 	{
+		private static List<Account> accounts = new List<Account>();
 		public static Client CreateClient()
 		{
 			string firstName = "";
@@ -52,6 +53,7 @@ namespace HW14
 
 			return new Account(newClient, initialBalance);
 		}
+		public static void AddAccountToList() => accounts.Add(CreateAccount());
 		public static void ShowAccountPosibilities(Account account)
 		{
 			bool isExit = false;
@@ -85,7 +87,7 @@ namespace HW14
 				}
 			}
 		}
-		public static void FindAccount(List<Account> accounts)
+		public static void FindAccount()
 		{
 			if (accounts.Count == 0 || accounts == null)
 			{

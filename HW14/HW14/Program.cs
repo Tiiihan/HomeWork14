@@ -5,16 +5,6 @@
 
 using HW14;
 
-Client firstClient = new Client("Lana", "DelRey", "1488");
-Client secondClient = new Client("Tomas", "Mamash", "1352");
-
-Account accountOfFirstClient = new Account(firstClient, 100);
-Account accountOfSecondClient = new Account(secondClient, 100);
-
-List<Account> accounts = new List<Account>();
-accounts.Add(accountOfFirstClient);
-accounts.Add(accountOfSecondClient);
-
 int userChoice = 0;
 bool isEnd = true;
 
@@ -28,10 +18,10 @@ while (isEnd)
 	switch ((UserChoice)userChoice)
 	{ 
 		case UserChoice.CreateAccount:
-			accounts.Add(AccountManager.CreateAccount());
+			AccountManager.AddAccountToList();
 			break;
 		case UserChoice.EnterToAccount:
-			AccountManager.FindAccount(accounts);
+			AccountManager.FindAccount();
 			break;
 		case UserChoice.Exit:
 			isEnd = false;
